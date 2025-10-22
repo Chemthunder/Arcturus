@@ -5,6 +5,7 @@ import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import silly.chemthunder.arcturus.index.ArcturusEffects;
+import silly.chemthunder.arcturus.index.ArcturusEntities;
 import silly.chemthunder.arcturus.index.ArcturusItems;
 
 public class Arcturus implements ModInitializer {
@@ -19,7 +20,7 @@ public class Arcturus implements ModInitializer {
 	public void onInitialize() {
         ArcturusItems.initialize();
         ArcturusEffects.initialize();
+        ArcturusEntities.initialize();
 
-		LOGGER.info("Hello Fabric world!");
 	}
 }

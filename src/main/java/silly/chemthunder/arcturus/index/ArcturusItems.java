@@ -43,6 +43,7 @@ public interface ArcturusItems {
     Item HERALDS_HORN = create("heralds_horn", new HeraldsHornItem(new Item.Settings()
             .maxCount(1)
             .fireproof()
+            .rarity(Rarity.UNCOMMON)
     ));
 
     static <T extends Item> T create(String name, T item) {
