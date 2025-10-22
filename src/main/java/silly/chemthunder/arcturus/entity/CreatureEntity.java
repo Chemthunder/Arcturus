@@ -27,11 +27,6 @@ public class CreatureEntity extends Entity {
     }
 
     @Override
-    protected boolean canStartRiding(Entity entity) {
-        return true;
-    }
-
-    @Override
     public boolean canHit() {
         return false;
     }
