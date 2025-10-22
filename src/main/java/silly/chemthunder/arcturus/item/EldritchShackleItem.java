@@ -52,7 +52,7 @@ public class EldritchShackleItem extends Item {
         world.spawnEntity(creatureEntity);
         entity.startRiding(creatureEntity);
 
-        entity.addStatusEffect(new StatusEffectInstance(ArcturusEffects.CHAINED, Integer.MAX_VALUE));
+        // entity.addStatusEffect(new StatusEffectInstance(ArcturusEffects.CHAINED, Integer.MAX_VALUE));
         user.playSound(SoundEvents.BLOCK_CONDUIT_AMBIENT_SHORT, 1, 1);
         user.playSound(SoundEvents.BLOCK_BEACON_POWER_SELECT, 1, 1);
         return super.useOnEntity(stack, user, entity, hand);
