@@ -13,6 +13,10 @@
     "requireAnnotations": true
   },
   "client": [
-    "client.BipedEntityModelMixin"
+    "client.BipedEntityModelMixin",
+    "client.ItemRendererAccessor",
+    "client.ItemRendererMixin",
+    "client.ModelLoaderMixin",
+    "client.PlayerEntityRendererMixin"
   ]
 }

@@ -22,5 +22,6 @@ public class Arcturus implements ModInitializer {
         ArcturusEffects.initialize();
         ArcturusEntities.initialize();
 
+        LOGGER.debug("debug init has begun");
 	}
 }

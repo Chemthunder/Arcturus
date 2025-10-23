@@ -40,6 +40,7 @@ public class HeraldsHornItem extends Item {
         for (LivingEntity entity : entities) {
             if (entity != user) {
                 entity.setVelocity(box.getCenter().subtract(entity.getPos()).multiply(-1.6));
+                entity.addVelocity(0, 1.6f, 0);
             }
         }
         return super.use(world, user, hand);

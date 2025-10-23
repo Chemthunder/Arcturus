@@ -1,0 +1,35 @@
+{
+  "credit": "Made with Blockbench",
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "arcturus:item/decadence_handheld"
+  },
+  "display": {
+    "thirdperson_righthand": {
+      "rotation": [-46.5, -90, 0],
+      "translation": [0, 14.25, -0.25],
+      "scale": [2, 2, 1]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [-46, 90, 0],
+      "translation": [0, 16.25, -0.25],
+      "scale": [2, 2, 0.85]
+    },
+    "firstperson_righthand": {
+      "rotation": [-46.25, -90, 0],
+      "translation": [1.13, 7.95, 0.24],
+      "scale": [1.36, 1.36, 0.68]
+    },
+    "firstperson_lefthand": {
+      "rotation": [-46.25, 90, 0],
+      "translation": [1.13, 7.95, 0.24],
+      "scale": [1.36, 1.36, 0.68]
+    },
+    "gui": {
+      "scale": [1.1, 1.1, 1.1]
+    },
+    "fixed": {
+      "scale": [2, 2, 2]
+    }
+  }
+}

@@ -6,6 +6,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import silly.chemthunder.arcturus.Arcturus;
+import silly.chemthunder.arcturus.effect.DespairEffect;
 import silly.chemthunder.arcturus.effect.SillyChainThatLocksPeopleInPlaceStatusEffect;
 
 import java.util.LinkedHashMap;
@@ -15,6 +16,7 @@ public interface ArcturusEffects {
     Map<StatusEffect, Identifier> EFFECTS = new LinkedHashMap<>();
 
     StatusEffect CHAINED = create("chained", new SillyChainThatLocksPeopleInPlaceStatusEffect(StatusEffectCategory.NEUTRAL, 0x00000));
+    StatusEffect DESPAIR = create("despair", new DespairEffect(StatusEffectCategory.NEUTRAL, 0x00000));
 
     static void initialize() {
         EFFECTS.keySet().forEach(effect -> Registry.register(Registries.STATUS_EFFECT, EFFECTS.get(effect), effect));

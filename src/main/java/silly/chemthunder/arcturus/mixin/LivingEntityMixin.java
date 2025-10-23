@@ -49,16 +49,4 @@ public abstract class LivingEntityMixin extends Entity implements Attackable {
            }
        }
     }
-
-    @Inject(method = "onDamaged", at = @At("HEAD"))
-    private void removeBound(DamageSource damageSource, CallbackInfo ci) {
-        if ((Object) this instanceof LivingEntity player) {
-            if (player.hasStatusEffect(ArcturusEffects.CHAINED)) {
-                player.removeStatusEffect(ArcturusEffects.CHAINED);
-                if (player.getVehicle() instanceof CreatureEntity creatureEntity) {
-                    creatureEntity.kill();
-                }
-            }
-        }
-    }
 }

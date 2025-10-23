@@ -5,14 +5,13 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.item.Items;
+import net.minecraft.item.ToolMaterials;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import silly.chemthunder.arcturus.Arcturus;
-import silly.chemthunder.arcturus.item.DamnedBookItem;
-import silly.chemthunder.arcturus.item.EldritchShackleItem;
-import silly.chemthunder.arcturus.item.HeraldsHornItem;
+import silly.chemthunder.arcturus.item.*;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -46,6 +45,27 @@ public interface ArcturusItems {
             .rarity(Rarity.UNCOMMON)
     ));
 
+    Item DECADENCE = create("decadence", new DecadenceItem(
+            ToolMaterials.NETHERITE,
+            3,
+            -2.5f,
+
+            new Item.Settings()
+            .maxCount(1)
+            .rarity(Rarity.UNCOMMON)
+            .fireproof()
+    ));
+
+    Item SHATTERED_DECADENCE = create("shattered_decadence", new ShatteredDecadenceItem(new Item.Settings()
+            .maxCount(1)
+            .rarity(Rarity.UNCOMMON)
+    ));
+
+    Item TATTERED_DAMNED_BOOK = create("tattered_damned_book", new TatteredDamnedBookItem(new Item.Settings()
+            .maxCount(1)
+            .rarity(Rarity.UNCOMMON)
+    ));
+
     static <T extends Item> T create(String name, T item) {
         ITEMS.put(item, Arcturus.id(name));
         return item;
@@ -53,7 +73,6 @@ public interface ArcturusItems {
 
     static void initialize() {
         ITEMS.forEach((item, id) -> Registry.register(Registries.ITEM, id, item));
-
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(ArcturusItems::addCombatEntries);
     }
 
@@ -62,5 +81,15 @@ public interface ArcturusItems {
         fabricItemGroupEntries.addAfter(DAMNED_BOOK, ELDRITCH_SHACKLE);
         fabricItemGroupEntries.addAfter(ELDRITCH_SHACKLE, HERALDS_HORN);
         fabricItemGroupEntries.addAfter(ELDRITCH_SHACKLE, HOLY_SHARD);
+        fabricItemGroupEntries.addAfter(HOLY_SHARD, DECADENCE);
+        fabricItemGroupEntries.addAfter(DAMNED_BOOK, TATTERED_DAMNED_BOOK);
+        fabricItemGroupEntries.addAfter(DECADENCE, SHATTERED_DECADENCE);
     }
+
+    /*
+    / todo
+    / add custom item group
+    / simplify existing items
+    / revamp shackles
+     */
 }

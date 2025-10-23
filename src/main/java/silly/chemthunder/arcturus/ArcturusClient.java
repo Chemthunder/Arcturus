@@ -9,5 +9,6 @@ public class ArcturusClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         EntityRendererRegistry.register(ArcturusEntities.CREATURE, EmptyEntityRenderer::new);
+        EntityRendererRegistry.register(ArcturusEntities.MISSILE, EmptyEntityRenderer::new);
     }
 }

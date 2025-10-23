@@ -2,7 +2,12 @@ package silly.chemthunder.arcturus.entity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
@@ -28,7 +33,7 @@ public class CreatureEntity extends Entity {
 
     @Override
     public boolean canHit() {
-        return false;
+        return true;
     }
 
     @Override
@@ -44,5 +49,24 @@ public class CreatureEntity extends Entity {
     @Override
     public boolean hasNoGravity() {
         return true;
+    }
+
+    @Override
+    public ActionResult interact(PlayerEntity player, Hand hand) {
+        if (player.isSneaking()) {
+            this.kill();
+
+            Entity attacker = player.getControllingVehicle();
+            if (attacker instanceof LivingEntity livingEntity) {
+                livingEntity.clearStatusEffects();
+            }
+        }
+        return super.interact(player, hand);
+    }
+
+    @Override
+    public void onDamaged(DamageSource damageSource) {
+        this.kill();
+        super.onDamaged(damageSource);
     }
 }
