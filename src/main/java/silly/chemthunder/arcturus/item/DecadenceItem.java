@@ -7,6 +7,7 @@ import net.acoyt.acornlib.impl.init.AcornParticles;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.SwordItem;
@@ -16,6 +17,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import silly.chemthunder.arcturus.index.ArcturusDamageSources;
+import silly.chemthunder.arcturus.index.ArcturusEffects;
 
 public class DecadenceItem extends SwordItem implements CustomHitSoundItem, CustomHitParticleItem, CustomKillSourceItem {
     public DecadenceItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
@@ -57,5 +59,11 @@ public class DecadenceItem extends SwordItem implements CustomHitSoundItem, Cust
     @Override
     public int getEnchantability() {
         return 0;
+    }
+
+    @Override
+    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        target.addStatusEffect(new StatusEffectInstance(ArcturusEffects.DESPAIR, 100));
+        return super.postHit(stack, target, attacker);
     }
 }

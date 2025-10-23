@@ -1,6 +1,5 @@
 package silly.chemthunder.arcturus.item;
 
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -19,20 +18,18 @@ public class DamnedBookItem extends Item {
     }
 
     @Override
-    public int getMaxUseTime(ItemStack stack) {
-        return super.getMaxUseTime(stack);
-    }
-
-    @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        if (world instanceof ServerWorld serverWorld) {
-            MissileEntity missile = new MissileEntity(ArcturusEntities.MISSILE, world);
-            Vec3d pos = user.getPos();
-            missile.updatePosition(pos.x, pos.y + 1.5f, pos.z);
-            missile.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 7.5F * 0.5F, 0.0F);
-            serverWorld.spawnEntity(missile);
-            user.playSound(SoundEvents.BLOCK_BEACON_AMBIENT, 1, 1);
-        }
+            if (world instanceof ServerWorld serverWorld) {
+                MissileEntity missile = new MissileEntity(ArcturusEntities.MISSILE, world);
+                Vec3d pos = user.getPos();
+                missile.updatePosition(pos.x, pos.y + 1.5f, pos.z);
+                missile.setVelocity(user, user.getPitch(), user.getYaw(), 0.0F, 7.5F * 0.5F, 2.0F);
+
+                serverWorld.spawnEntity(missile);
+                missile.setOwner(user);
+            }
+        user.playSound(SoundEvents.BLOCK_BEACON_POWER_SELECT, 5, 1);
+        user.playSound(SoundEvents.ITEM_LODESTONE_COMPASS_LOCK, 5, 1);
         return super.use(world, user, hand);
     }
 }

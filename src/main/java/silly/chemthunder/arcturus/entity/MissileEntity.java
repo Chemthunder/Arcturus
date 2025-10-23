@@ -1,10 +1,7 @@
 package silly.chemthunder.arcturus.entity;
 
-import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.projectile.thrown.SnowballEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
 import net.minecraft.particle.ParticleTypes;
@@ -50,7 +47,7 @@ public class MissileEntity extends ThrownItemEntity {
     protected void onEntityHit(EntityHitResult entityHitResult) {
         Entity entity = entityHitResult.getEntity();
 
-        entity.damage(ArcturusDamageSources.grimoire(entity), 5f);
+        entity.damage(ArcturusDamageSources.grimoire(entity), 1.5f);
         this.discard();
         super.onEntityHit(entityHitResult);
     }
