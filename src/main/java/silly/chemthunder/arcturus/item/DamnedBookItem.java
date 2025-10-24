@@ -4,7 +4,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.math.Vec3d;
@@ -28,8 +27,7 @@ public class DamnedBookItem extends Item {
                 serverWorld.spawnEntity(missile);
                 missile.setOwner(user);
             }
-        user.playSound(SoundEvents.BLOCK_BEACON_POWER_SELECT, 5, 1);
-        user.playSound(SoundEvents.ITEM_LODESTONE_COMPASS_LOCK, 5, 1);
+            user.getItemCooldownManager().set(this.asItem(), 15);
         return super.use(world, user, hand);
     }
 }
