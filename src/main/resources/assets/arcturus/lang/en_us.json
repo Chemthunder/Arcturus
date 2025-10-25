@@ -1,8 +1,8 @@
 {
-  "death.attack.decadence_kill": "%1$s was set free of sin",
-  "death.attack.decadence_kill.player": "%1$s was set free of sin by %2$s",
-  "death.attack.grimoire": "%1$s was shot down by the Book of the Damned",
-  "death.attack.grimoire.player": "%1$s was shot down by %2$s wielding the Book of the Damned",
+  "death.attack.decadence_kill": "%1$s was purified of sin",
+  "death.attack.decadence_kill.player": "%1$s was purified of sin by %2$s",
+  "death.attack.grimoire": "%1$s was buried six feet under",
+  "death.attack.grimoire.player": "%1$s was buried six feet under by %2$s",
 
   "effect.arcturus.despair": "Despair",
 
@@ -10,7 +10,7 @@
   "item.arcturus.decadence": "Decadence",
   "item.arcturus.eldritch_shackle": "Eldritch Shackle",
   "item.arcturus.heralds_horn": "Herald's Horn",
-  "item.arcturus.holy_shard": "Holy Shard",
   "item.arcturus.shattered_decadence": "Shattered Decadence",
+  "item.arcturus.starlight_shard": "Shard of Starlight",
   "item.arcturus.tattered_damned_book": "Tattered Book of the Damned"
 }

@@ -29,6 +29,14 @@ repositories {
         name = "Terraformers"
         url = "https://maven.terraformersmc.com/"
     }
+
+    // rea
+    maven {
+        url "https://maven.jamieswhiteshirt.com/libs-release"
+        content {
+            includeGroup "com.jamieswhiteshirt"
+        }
+    }
 }
 
 
@@ -55,7 +63,7 @@ dependencies {
     modImplementation ("maven.modrinth:midnightlib:${project.midnightlib_version}")
 
     // rea
-
+    modImplementation("com.jamieswhiteshirt:reach-entity-attributes:${project.rea_version}")
 }
 
 processResources {

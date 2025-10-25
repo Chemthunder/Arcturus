@@ -27,7 +27,7 @@ public interface ArcturusItems {
             .rarity(Rarity.UNCOMMON)
     ));
 
-    Item HOLY_SHARD = create("holy_shard", new Item(new Item.Settings()
+    Item STARLIGHT_SHARD = create("starlight_shard", new Item(new Item.Settings()
             .maxCount(1)
             .fireproof()
             .rarity(Rarity.UNCOMMON)
@@ -80,8 +80,8 @@ public interface ArcturusItems {
         fabricItemGroupEntries.addAfter(Items.TRIDENT, DAMNED_BOOK);
         fabricItemGroupEntries.addAfter(DAMNED_BOOK, ELDRITCH_SHACKLE);
         fabricItemGroupEntries.addAfter(ELDRITCH_SHACKLE, HERALDS_HORN);
-        fabricItemGroupEntries.addAfter(ELDRITCH_SHACKLE, HOLY_SHARD);
-        fabricItemGroupEntries.addAfter(HOLY_SHARD, DECADENCE);
+        fabricItemGroupEntries.addAfter(ELDRITCH_SHACKLE, STARLIGHT_SHARD);
+        fabricItemGroupEntries.addAfter(STARLIGHT_SHARD, DECADENCE);
         fabricItemGroupEntries.addAfter(DAMNED_BOOK, TATTERED_DAMNED_BOOK);
         fabricItemGroupEntries.addAfter(DECADENCE, SHATTERED_DECADENCE);
     }

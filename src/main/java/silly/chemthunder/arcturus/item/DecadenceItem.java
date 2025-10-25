@@ -1,11 +1,17 @@
 package silly.chemthunder.arcturus.item;
 
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 import net.acoyt.acornlib.api.item.CustomHitParticleItem;
 import net.acoyt.acornlib.api.item.CustomHitSoundItem;
 import net.acoyt.acornlib.api.item.CustomKillSourceItem;
 import net.acoyt.acornlib.impl.init.AcornParticles;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.EntityAttribute;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,6 +24,8 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import silly.chemthunder.arcturus.index.ArcturusDamageSources;
 import silly.chemthunder.arcturus.index.ArcturusEffects;
+
+import java.util.UUID;
 
 public class DecadenceItem extends SwordItem implements CustomHitSoundItem, CustomHitParticleItem, CustomKillSourceItem {
     public DecadenceItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
@@ -65,5 +73,18 @@ public class DecadenceItem extends SwordItem implements CustomHitSoundItem, Cust
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         target.addStatusEffect(new StatusEffectInstance(ArcturusEffects.DESPAIR, 100));
         return super.postHit(stack, target, attacker);
+    }
+
+    @Override
+    public Multimap<EntityAttribute, EntityAttributeModifier> getAttributeModifiers(ItemStack stack, EquipmentSlot slot) {
+        if (slot == EquipmentSlot.MAINHAND) {
+            return ImmutableMultimap.<EntityAttribute, EntityAttributeModifier>builder()
+                    .putAll(super.getAttributeModifiers(stack, slot))
+                    .put(ReachEntityAttributes.REACH, new EntityAttributeModifier(UUID.fromString("123e4567-e89b-12d3-a456-426614174000"), "Reach", 1, EntityAttributeModifier.Operation.ADDITION))
+                    .put(ReachEntityAttributes.ATTACK_RANGE, new EntityAttributeModifier(UUID.fromString("123e4567-e89b-12d3-a456-426614174001"), "Entity Interaction Range", 1, EntityAttributeModifier.Operation.ADDITION))
+                    .build();
+        } else {
+            return super.getAttributeModifiers(slot);
+        }
     }
 }
