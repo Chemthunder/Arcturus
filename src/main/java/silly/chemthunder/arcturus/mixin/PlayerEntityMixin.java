@@ -14,9 +14,6 @@ import silly.chemthunder.arcturus.index.ArcturusEffects;
 
 @Mixin(PlayerEntity.class)
 public abstract class PlayerEntityMixin extends LivingEntity {
-    @Shadow
-    public abstract boolean giveItemStack(ItemStack stack);
-
     protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
     }
@@ -27,13 +24,5 @@ public abstract class PlayerEntityMixin extends LivingEntity {
             return false;
         }
         return super.isSneaking();
-    }
-
-    @ModifyReturnValue(method = "getMovementSpeed", at = @At("RETURN"))
-    public float getMovementSpeed(float original) {
-        if (this.hasStatusEffect(ArcturusEffects.DESPAIR)) {
-                return original / 1.4f;
-        }
-        return original;
     }
 }

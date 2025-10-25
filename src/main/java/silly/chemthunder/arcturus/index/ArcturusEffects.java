@@ -19,7 +19,11 @@ public interface ArcturusEffects {
     Map<StatusEffect, Identifier> EFFECTS = new LinkedHashMap<>();
 
     StatusEffect CHAINED = create("chained", new SillyChainThatLocksPeopleInPlaceStatusEffect(StatusEffectCategory.NEUTRAL, 0x00000));
-    StatusEffect DESPAIR = create("despair", new DespairEffect(StatusEffectCategory.NEUTRAL, 0x00000).addAttributeModifier(EntityAttributes.GENERIC_MAX_HEALTH, UUID.randomUUID().toString(), -2, EntityAttributeModifier.Operation.ADDITION));
+
+    StatusEffect DESPAIR = create("despair", new DespairEffect(StatusEffectCategory.NEUTRAL, 0x00000)
+            .addAttributeModifier(EntityAttributes.GENERIC_MAX_HEALTH, UUID.randomUUID().toString(), -1, EntityAttributeModifier.Operation.ADDITION)
+            .addAttributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, UUID.randomUUID().toString(), -0.15, EntityAttributeModifier.Operation.ADDITION)
+    );
 
     static void initialize() {
         EFFECTS.keySet().forEach(effect -> Registry.register(Registries.STATUS_EFFECT, EFFECTS.get(effect), effect));

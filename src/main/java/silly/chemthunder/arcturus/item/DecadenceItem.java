@@ -71,7 +71,12 @@ public class DecadenceItem extends SwordItem implements CustomHitSoundItem, Cust
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        target.addStatusEffect(new StatusEffectInstance(ArcturusEffects.DESPAIR, 100));
+        if (!target.hasStatusEffect(ArcturusEffects.DESPAIR)) {
+            target.addStatusEffect(new StatusEffectInstance(ArcturusEffects.DESPAIR, 100));
+        }
+        if (target.hasStatusEffect(ArcturusEffects.DESPAIR)) {
+
+        }
         return super.postHit(stack, target, attacker);
     }
 

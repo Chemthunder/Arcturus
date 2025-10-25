@@ -47,7 +47,7 @@ public class MissileEntity extends ThrownItemEntity {
     protected void onEntityHit(EntityHitResult entityHitResult) {
         Entity entity = entityHitResult.getEntity();
 
-        entity.damage(ArcturusDamageSources.grimoire(entity), 1.5f);
+        entity.damage(ArcturusDamageSources.grimoire(entity), 3.5f);
         this.discard();
         super.onEntityHit(entityHitResult);
     }
